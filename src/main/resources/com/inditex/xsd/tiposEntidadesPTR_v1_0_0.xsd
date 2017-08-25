@@ -15,7 +15,8 @@ Version 1.0.1 25-05-2017
 Types updated: MCCTType, CampaignType
 New types added: SeasonType, MCCType, StockRFIDType
 
-
+Version 1.0.2 03-08-2017
+New types added: ArticleMC, ArticleMCC, ArticleMCCT
 
 
 </xsd:documentation>
@@ -76,7 +77,7 @@ New types added: SeasonType, MCCType, StockRFIDType
 				minOccurs="1">
 			</xsd:element>
 			<xsd:element name="year" type="YearType" maxOccurs="1"
-				minOccurs="0"></xsd:element>
+				minOccurs="1"></xsd:element>
 		</xsd:sequence>
 	</xsd:complexType>
 
@@ -872,4 +873,46 @@ New types added: SeasonType, MCCType, StockRFIDType
     	<xsd:restriction base="xsd:unsignedInt"></xsd:restriction>
     </xsd:simpleType>
 
+
+
+      <xsd:complexType name="ArticleMCType">
+      	<xsd:complexContent>
+      		<xsd:extension base="CampaignType">
+      			<xsd:sequence>
+      				<xsd:element name="Model" type="ModelType" maxOccurs="1" minOccurs="1">
+      				</xsd:element>
+      				<xsd:element name="Quality"
+      					type="QualityType" maxOccurs="1" minOccurs="1">
+      				</xsd:element>
+      			</xsd:sequence>
+      		</xsd:extension>
+      	</xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="ArticleMCCType">
+      	<xsd:complexContent>
+      		<xsd:extension base="ArticleMCType">
+      			<xsd:sequence>
+      				<xsd:element name="Colour"
+      					type="ColorType" maxOccurs="1" minOccurs="1">
+      				</xsd:element>
+      			</xsd:sequence>
+      		</xsd:extension>
+      	</xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:complexType name="ArticleMCCTType">
+      	<xsd:complexContent>
+      		<xsd:extension base="ArticleMCCType">
+      			<xsd:sequence>
+      				<xsd:element name="size" type="SizeType" maxOccurs="1" minOccurs="1">
+      				</xsd:element>
+      			</xsd:sequence>
+      		</xsd:extension>
+      	</xsd:complexContent>
+      </xsd:complexType>
+
+      <xsd:simpleType name="CentreType">
+      	<xsd:restriction base="xsd:int"></xsd:restriction>
+      </xsd:simpleType>
 </xsd:schema>
